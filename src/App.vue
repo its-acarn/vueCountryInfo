@@ -1,28 +1,31 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="html">
+	<main>
+		<h1>Country Info</h1>
+		<select name="country-dropdown" v-on:click="fetchCountry">
+			<option v-for="country in countries">{{ country.name }}</option>
+		</select>
+	</main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	name: 'App',
+	data() {
+		return {
+			countries: []
+		};
+	},
+	mounted() {
+		this.fetchCountry();
+	},
+	methods: {
+		fetchCountry: function() {
+			fetch('https://restcountries.eu/rest/v2/all')
+				.then((response) => response.json())
+				.then((data) => (this.countries = data));
+		}
+	}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="css" scoped></style>
