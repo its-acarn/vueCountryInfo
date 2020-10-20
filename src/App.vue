@@ -63,10 +63,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+* {
+	background: lime;
+	border: magenta 5px solid;
+}
 #selected-country {
-	font-family: monospace;
+	font-family: 'Red Hat Text';
 	font-size: 20px;
 	color: #000067;
 	text-decoration: underline;
+	font-style: italic;
+	font-weight: 900;
 }
 </style>
