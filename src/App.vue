@@ -8,7 +8,7 @@
 			v-model="selectedCountryIndex"
 			v-on:change="findCountryInfo()"
 		>
-			<option disabled value="">Select a country</option>
+			<option disabled value="">Select a country:</option>
 			<option
 				v-for="(country, index) in countries"
 				:key="index"
@@ -16,7 +16,11 @@
 				>{{ country.name }}</option
 			>
 		</select>
-		<p>The selected country is {{ selectedCountryInfo.name }}</p>
+		<p>
+			The selected country is
+			<span id="selected-country">{{ selectedCountryInfo.name }}</span
+			>.
+		</p>
 		<!-- <country-info
 			v-for="(country, index) in countries"
 			:key="index"
@@ -58,4 +62,11 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+#selected-country {
+	font-family: monospace;
+	font-size: 20px;
+	color: #000067;
+	text-decoration: underline;
+}
+</style>
